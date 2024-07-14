@@ -1,0 +1,440 @@
+* {
+  font-family: Arial, sans-serif;
+}
+
+body {
+  background-color: white;
+}
+
+nav {
+    background-color: rgb(42, 42, 42);
+    overflow: hidden;
+   
+}
+nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+nav li {
+    float: left;
+}
+
+nav a {
+    display: block;
+    color: rgb(242, 245, 247);
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+nav a:hover {
+    background-color: red;
+}
+
+table, th, td {
+    padding: 10px;
+    font-size: 20px;
+    border-radius: 1px;
+}
+
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th, td {
+  border: 1px solid #ddd;
+  text-align: center;
+}
+
+th {
+  background-color: red;
+  color: white;
+}
+
+
+
+input[type="time"] {
+  border: none;
+  outline: none;
+  background-color: #f8f8f8;
+  padding: 5px 10px;
+  text-align: center;
+  font-size: 14px;
+  border-radius: 5px;
+  margin: 5px;
+  
+}
+
+
+
+* {
+  outline: none;
+}
+
+
+
+
+
+
+/* ///////////////////////////////  */
+.dropdown {
+    float: left;
+    overflow: hidden;
+    cursor: pointer; 
+  }
+  
+  .dropdown .dropbtn {
+    font-size: 16px;  
+    border: none;
+    outline: none;
+    color: white;
+    padding: 14px 16px;
+    background-color: inherit;
+    font-family: inherit;
+    margin: 0;
+  }
+  
+  .navbar a:hover, .dropdown:hover .dropbtn {
+    background-color: red;
+  }
+  
+  .dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+  }
+  
+  .dropdown-content a {
+    float: none;
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    text-align: left;
+  }
+  
+  .dropdown-content a:hover {
+    background-color: #ddd;
+  }
+  
+  .dropdown:hover .dropdown-content {
+    display: block;
+  }
+
+/* ///////////////////////////////  */
+#show-schedule {
+  background-color: red; 
+  border: none; 
+  color: white; 
+  padding: 15px 32px; 
+  text-align: center; 
+  text-decoration: none; 
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer; 
+  transition-duration: 0.4s;
+  border-radius: 5px; 
+}
+
+#show-schedule:hover {
+  background-color: #45a049; 
+}
+@keyframes color-wave {
+  0% { background-color: #ce801b; }
+  25% { background-color: #0ba713; }
+  50% { background-color: #a091ad; }
+  75% { background-color: #45a049; }
+  100% { background-color: #792049; }
+}
+
+#show-schedule:active {
+  animation: color-wave 2s linear infinite;
+}
+
+nav ul {
+  display: flex;
+  justify-content: space-between;
+}
+
+/* Style the logout button */
+nav ul li:last-child {
+  order: 2;
+}
+#calendar th, #calendar td {
+  width: 100px;
+} 
+
+
+#schedule-dialog {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: white;
+  border: 1px solid rgb(231, 228, 228);
+  padding: 20px;
+  z-index: 1000;
+  width: 95%;
+  border-radius: 5px;
+}
+
+
+#overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 999;
+}
+
+#submit-schedule, #cancel-schedule, #selectAll, #deleteAll {
+  padding: 10px 20px;
+  margin: 10px;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+}
+
+#submit-schedule , #selectAll {
+  background-color: #4CAF50; /* Green */
+  color: white;
+  border-radius: 5px;
+}
+
+#cancel-schedule, #deleteAll {
+  background-color: #f44336; /* Red */
+  color: white;
+  border-radius: 5px;
+}
+button {
+  border: none;
+  cursor: pointer;
+}
+
+#show-checkin, #show-checkout, #create-request, #sent-request {
+  background-color: red; 
+  border: none; 
+  color: white; 
+  padding: 15px 32px; 
+  text-align: center; 
+  text-decoration: none; 
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer; 
+  transition-duration: 0.4s; 
+  border-radius: 5px;
+}
+
+#show-checkin:hover, #show-checkout:hover, #create-request:hover, #sent-request:hover {
+  background-color: #45a049;
+}
+
+
+
+#request-dialog {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: white;
+  border: 1px solid rgb(206, 187, 187);
+  border-radius: 8px;
+  padding: 20px;
+  z-index: 1000;
+  box-shadow: 0px 0px 10px 0px rgba(167, 4, 58, 0.904);
+}
+#request-dialog label {
+  font-weight: bold;
+  margin-top: 10px;
+}
+#request-dialog select, #request-dialog input[type="time"] {
+  width: 100%;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  padding: 5px;
+  margin-top: 5px;
+}
+
+#request-dialog button {
+  border: none;
+  color: white;
+ 
+  text-align: center;
+  font-size: 20px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+
+#submit-checkin, #cancel-checkin, #submit-checkout, #cancel-checkout, #submit-request, #cancel-request{
+  padding: 10px 20px;
+  margin: 10px;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+}
+
+#submit-checkin, #submit-checkout, #submit-request, #cancel-request {
+  background-color: #4CAF50;
+  color: white;
+}
+
+#cancel-checkin, #cancel-checkout, #submit-request, #cancel-request {
+  background-color: #f44336;
+  color: white;
+}
+#checkin-dialog, #checkout-dialog {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: white;
+    border: 1px solid black;
+    padding: 20px;
+    z-index: 1000;
+    width: 80%;
+    height: 80%;
+    overflow: auto;
+}
+
+#submit-checkin, #cancel-checkin, #submit-checkout, #cancel-checkout, #submit-request, #cancel-request {
+    padding: 10px 20px;
+    margin: 10px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+}
+
+#submit-checkin, #submit-checkout {
+    background-color: #4CAF50;
+    color: white;
+}
+
+#cancel-checkin, #cancel-checkout {
+    background-color: #f44336;
+    color: white;
+}
+
+input[type="text"] {
+  width: 70%;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 16px;
+  margin-right: 10px;
+  outline: none;
+  
+}
+
+button.delete-btn {
+  background-color: #f44336; /* Red */
+  border: none;
+  color: white;
+  padding: 10px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 14px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+button.delete-btn:hover {
+  background-color: #d32f2f; /* Darker red on hover */
+}
+
+/* Existing styles */
+/* ///////////////////////////////////////////////// */
+/* Existing styles */
+
+/* Existing styles */
+
+
+
+
+#myDialog {
+  width: 200px;
+  border: none;
+  border-radius: 8px;
+  background-color: #ffffff;
+  box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.15);
+  text-align: center;
+
+}
+#myDialog form {
+  display: flex;
+  flex-direction: column;
+}
+#myDialog label {
+  font-weight: bold;
+  margin-top: 10px;
+  font-size: 20px;
+  
+}
+#myDialog input[type="time"] {
+  border: none;
+  border-radius: 4px;
+  padding: 5px;
+  margin-top: 5px;
+  font-size: 20px;
+ 
+}
+#confirmBtn {
+  background-color: #4CAF50;
+  color: white;
+  padding: 10px;
+  margin: 5px;
+  margin-right:45px;
+  font-size: 14px;
+  border: none;
+  cursor: pointer;
+  border-radius: 4px;
+ 
+}
+#confirmBtn:hover {
+  background-color: #3fa452;
+}
+#cancelBtn {
+  background-color: #f44336;
+  color: white;
+  padding: 10px;
+  margin: 5px;
+  margin-right:45px;
+  font-size: 14px;
+  border: none;
+  cursor: pointer;
+  border-radius: 4px;
+}
+#cancelBtn:hover {
+  background-color: #ca1212;
+}
+
+
+.Separate-bar {
+  text-align: center;
+  background-color: #e6eff0;
+}
+
+#sent-request-dialog {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: white;
+  border: 1px solid rgb(231, 228, 228);
+  padding: 20px;
+  z-index: 1000;
+  width: 95%;
+  border-radius: 5px;
+}

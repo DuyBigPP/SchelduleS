@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>work schedule</title>
+    <link rel="stylesheet" href="Test.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.js"></script>
+</head>
+
+<body>
+    <nav>
+        <ul>
+            <li class="dropdown">
+                <div class="dropdown">
+                    <button class="dropbtn">Đăng kí lịch</button>
+                </div>
+            </li>
+            <li><a href="#" id="usernameDisplay"></a></li>
+            <li><a href="#logout">Đăng xuất</a></li>
+        </ul>
+    </nav>
+    <div id="schedule-dialog" style="display: none;">
+        <table id="schedule-table">
+            <thead>
+                <tr>
+                    <th>Khung giờ</th>
+                    <th>Sáng</th>
+                    <th>Chiều</th>
+                </tr>
+            </thead>
+            <tbody id="calendarBody">
+                <tr>
+                    <th>Thứ 2</th>
+                    <td>
+                        <input type="text" id="21-morning" onclick="openDialog('21-morning', 'morning')" readonly>
+                        <button class="delete-btn" onclick="clearTime('21-morning')">X</button>
+                    </td>
+                    <td>
+                        <input type="text" id="22-afternoon" onclick="openDialog('22-afternoon', 'afternoon')" readonly>
+                        <button class="delete-btn" onclick="clearTime('22-afternoon')">X</button>
+                    </td>
+                </tr>
+                <tr>
+                    <th>Thứ 3</th>
+                    <td>
+                        <input type="text" id="31-morning" onclick="openDialog('31-morning', 'morning')" readonly>
+                        <button class="delete-btn" onclick="clearTime('31-morning')">X</button>
+                    </td>
+                    <td>
+                        <input type="text" id="32-afternoon" onclick="openDialog('32-afternoon', 'afternoon')" readonly>
+                        <button class="delete-btn" onclick="clearTime('32-afternoon')">X</button>
+                    </td>
+                </tr>
+                <tr>
+                    <th>Thứ 4</th>
+                    <td>
+                        <input type="text" id="41-morning" onclick="openDialog('41-morning', 'morning')" readonly>
+                        <button class="delete-btn" onclick="clearTime('41-morning')">X</button>
+                    </td>
+                    <td>
+                        <input type="text" id="42-afternoon" onclick="openDialog('42-afternoon', 'afternoon')" readonly>
+                        <button class="delete-btn" onclick="clearTime('42-afternoon')">X</button>
+                    </td>
+                </tr>
+                <tr>
+                    <th>Thứ 5</th>
+                    <td>
+                        <input type="text" id="51-morning" onclick="openDialog('51-morning', 'morning')" readonly>
+                        <button class="delete-btn" onclick="clearTime('51-morning')">X</button>
+                    </td>
+                    <td>
+                        <input type="text" id="52-afternoon" onclick="openDialog('52-afternoon', 'afternoon')" readonly>
+                        <button class="delete-btn" onclick="clearTime('52-afternoon')">X</button>
+                    </td>
+                </tr>
+                <tr>
+                    <th>Thứ 6</th>
+                    <td>
+                        <input type="text" id="61-morning" onclick="openDialog('61-morning', 'morning')" readonly>
+                        <button class="delete-btn" onclick="clearTime('61-morning')">X</button>
+                    </td>
+                    <td>
+                        <input type="text" id="62-afternoon" onclick="openDialog('62-afternoon', 'afternoon')" readonly>
+                        <button class="delete-btn" onclick="clearTime('62-afternoon')">X</button>
+                    </td>
+                </tr>
+                <tr>
+                    <th>Thứ 7</th>
+                    <td>
+                        <input type="text" id="71-morning" onclick="openDialog('71-morning', 'morning')" readonly>
+                        <button class="delete-btn" onclick="clearTime('71-morning')">X</button>
+                    </td>
+                    <td>
+                        <input type="text" id="72-afternoon" onclick="openDialog('72-afternoon', 'afternoon')" readonly>
+                        <button class="delete-btn" onclick="clearTime('72-afternoon')">X</button>
+                    </td>
+                </tr>
+            
+
+                
+            
+        </table>
+        <button id="submit-schedule" onclick="postCreateCalendar()">Gửi</button>
+        <button id="cancel-schedule">Hủy</button>
+        <button onclick="selectAll()" id="selectAll">Chọn tất cả</button>
+        <button onclick="deleteAll()" id="deleteAll">Xóa tất cả</button>
+    </div>
+   
+    <div id="overlay" style="display: none;"></div>
+<!-- ////////////////////////////////////////////////////////////// -->
+
+<dialog id="myDialog">
+    <form method="dialog">
+        <p>
+            <label>Chọn thời gian buổi sáng:</label><br>
+            Bắt đầu: <input type="time" id="dialogMorningStartTimeInput"><br>
+            Kết thúc: <input type="time" id="dialogMorningEndTimeInput">
+        </p>
+        <p>
+            <label>Chọn thời gian buổi chiều:</label><br>
+            Bắt đầu: <input type="time" id="dialogAfternoonStartTimeInput"><br>
+            Kết thúc: <input type="time" id="dialogAfternoonEndTimeInput">
+        </p>
+        <menu id="menu">
+            <button id="confirmBtn" value="default">Đặt thời gian</button>
+            <br>
+            <button id="cancelBtn" value="cancel">Hủy</button>
+            
+        </menu>
+    </form>
+</dialog>
+
+<!-- /////////////////////////////////////////////////////////////////////
+ -->
+<div id="sent-request-dialog" style="display: none;">
+    <h2>Đơn đã gửi</h2>
+    <label for="sent-request-date">Chọn ngày:</label>
+    <input type="date" id="sent-request-date">
+    <button id="close-dialog">Đóng</button>
+</div>
+
+<!-- /////////////////////////////////////////////////////// -->
+    <button id="show-schedule">Đăng kí lịch</button>
+    <button id="show-checkin" onclick="checkIn()">Checkin</button>
+    <button id="show-checkout" onclick="checkOut()">Checkout</button>
+    <button id="create-request">Tạo đơn</button>
+    <button id="sent-request">Xem đơn</button>
+ <!--   ///////////////////////////////////////// -->
+    <div id="request-dialog" style="display: none;">
+        <label for="request-day">Chọn ngày:</label>
+        <select id="shift">
+            <option id="C1" value="">Thứ 2-AM</option>
+            <option id="C2" value="">Thứ 2-PM</option>
+            <option id="C3" value="">Thứ 3-AM</option>
+            <option id="C4" value="">Thứ 3-PM</option>
+            <option id="C5" value="">Thứ 4-AM</option>
+            <option id="C6" value="">Thứ 4-PM</option>
+            <option id="C7" value="">Thứ 5-AM</option>
+            <option id="C8" value="">Thứ 5-PM</option>
+            <option id="C9" value="">Thứ 6-AM</option>
+            <option id="C10" value="">Thứ 6-PM</option>
+            <option id="C11" value="">Thứ 7-AM</option>
+            <option id="C12" value="">Thứ 7-PM</option>
+        </select>
+
+        <label for="request-NoiDung">Loại</label>
+        <select id="form" onchange="showElement()"></select>
+        <div id="elementToShow" style="display:none;">
+            <h3>Start time</h3>
+            <input id="startTime" type="time">
+            <h3>End time</h3>
+            <input id="endTime" type="time">
+        </div>
+        <div>
+            <label for="request-LyDo">Lý do</label> <br>
+            <input type="text" id="request-LyDo"></input>
+        </div>
+        <button id="submit-request" onclick="postForm()">Gửi</button>
+        <button id="cancel-request">Hủy</button>
+    </div>
+    <div class="Separate-bar">
+        <p>Lịch đã đăng kí</p>
+    </div>
+    
+    <div id="week-day"></div>
+    <div id="calendar-container">
+        <table id="calendar">
+            <thead>
+                <tr>
+                    <th>Ngày</th>
+                    <th>Sáng</th>
+                    <th>Chiều</th>
+
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th id="date-2"></th>
+                    <td id="AM-2"></td>
+                    <td id="PM-2"></td>
+                </tr>
+                <tr>
+                    <th id="date-3"></th>
+                    <td id="AM-3"></td>
+                    <td id="PM-3"></td>
+                </tr>
+                <tr>
+                    <th id="date-4"></th>
+                    <td id="AM-4"></td>
+                    <td id="PM-4"></td>
+                </tr>
+                <tr>
+                    <th id="date-5"></th>
+                    <td id="AM-5"></td>
+                    <td id="PM-5"></td>
+                </tr>
+                <tr>
+                    <th id="date-6"></th>
+                    <td id="AM-6"></td>
+                    <td id="PM-6"></td>
+                </tr>
+                <tr>
+                    <th id="date-7"></th>
+                    <td id="AM-7"></td>
+                    <td id="PM-7"></td>
+                </tr>
+            </tbody>
+        </table>
+
+    </div>
+    <script src="getCalendar.js"></script>
+    <script src="test.js"></script>
+    <script src="postCheck.js"></script>
+    <script src="postForm.js"></script>
+    <script src="postCreateCalendar.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,65 @@
+@import url('https://fonts.googleapis.com/css2?family=Poetsen+One&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap');
+body {
+    background: linear-gradient(90deg, #C7C5F4, #776BCC);
+    font-family: "Roboto Mono", monospace;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background-image: url('loginBackground.jpg');
+}
+
+
+
+form {
+   background-color: transparent;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 20px 0px rgba(13, 148, 130, 0.932); /* darker box shadow */
+    width: 300px;
+    box-sizing: border-box;
+}
+
+
+
+
+input[type="text"], input[type="password"] {
+    background: none;
+    padding: 15px;
+    margin-bottom: 20px;
+    border: none; /* remove border */
+    border-bottom: 2px solid #000; /* add underline */
+    width: 100%; /* make input fields take up full width of form */
+    box-sizing: border-box; /* include padding and border in element's total width and height */
+    outline: none; /* remove focus outline */
+}
+
+input[type="text"]:hover, input[type="password"]:hover {
+    border-bottom: 2px solid #007BFF; /* change underline color on hover */
+    transform: scale(1.05); /* increase size by 5% */
+    transition: transform 0.3s ease;
+}
+
+input[type="submit"] {
+    width: 100%;
+    padding: 15px;
+    border-radius: 5px;
+    border: none;
+    color: #fff;
+    background-color: #7a096b;
+    cursor: pointer;
+    font-size: 18px;
+}
+
+input[type="submit"]:hover {
+    background-color: #0056b3;
+    transition: background-color 0.3s ease;
+    transform: scale(1.05); /* increase size by 5% */
+    transition: transform 0.3s ease;
+}
+.loginLabel {
+    text-align: center;
+    font-size: 20px;
+}
+
